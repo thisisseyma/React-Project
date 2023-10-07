@@ -1,0 +1,36 @@
+.navbar {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(18, 127, 155);
+  width: 250px;
+  align-items: center;
+  min-height: 100vh;
+  position: fixed;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-bar a {
+  text-decoration: none;
+}
+
+.nav-links li {
+  list-style-type: none;
+}
+
+.nav-links ul {
+  padding: 0;
+}
