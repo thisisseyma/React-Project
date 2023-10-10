@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import noPoster from "../assets/images/no-poster.png";
+import "./MovieDetails.css";
 
 function MovieDetails() {
   const [movieData, setMovieData] = useState({});
@@ -8,15 +10,13 @@ function MovieDetails() {
   useEffect(() => {
     const fetchMovieDetail = async () => {
       try {
-        //const apiKey = "01362cd35d583e444d19758bff64a01f";
         const apiUrl = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
 
         const options = {
           method: "GET",
           headers: {
             accept: "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMTM2MmNkMzVkNTgzZTQ0NGQxOTc1OGJmZjY0YTAxZiIsInN1YiI6IjY1MWZkZTMyNzQ1MDdkMDBlMjExNmE1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.22Hx92KLNqH4ve5puNNHvQJ3ldaBgdA3yo2jIeoTaVE",
+            Authorization: process.env.REACT_APP_AUTHORIZATION,
           },
         };
 
@@ -33,19 +33,28 @@ function MovieDetails() {
 
   return (
     <div className="movie-container">
-      <div>Back to Home Page</div>
-      <div>
+      <div className="movie-box">
         <div>
           {movieData.poster_path ? (
             <img
+              className="movie-card-img"
               src={`https://image.tmdb.org/t/p/w500/${movieData.poster_path}`}
               alt={`Poster for ${movieData.title}`}
             />
           ) : (
-            <p>No poster available</p>
+            <img className="movie-card-img" src={noPoster} alt="no-poster" />
           )}
         </div>
-        <div>{movieData.title}</div>
+        <div className="movie-info">
+          <h1>
+            {movieData.title} ({movieData.release_date?.split("-")[0]})
+          </h1>
+          <h3>"{movieData.tagline}"</h3>
+          <h4>{movieData.vote_average} / 10</h4>
+          <h4>{movieData.runtime}min</h4>
+          <h3 className="overview">Overview</h3>
+          <p>{movieData.overview}</p>
+        </div>
       </div>
     </div>
   );

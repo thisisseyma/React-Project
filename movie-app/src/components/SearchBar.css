@@ -1,1 +1,37 @@
+.search-field {
+  height: 80px;
+  background-color: rgb(204, 182, 206);
+  width: 85%;
+  margin-left: 15%;
+  position: fixed;
+  z-index: 999;
+}
 
+.search-input input {
+  width: 70%;
+  height: 20px;
+  line-height: 46px;
+  font-size: 1.1em;
+  color: rgba(0, 0, 0, 0.5);
+  border: 0;
+  border-radius: 30px;
+  padding: 10px 20px;
+  margin-top: 20px;
+}
+
+.search-input button {
+  height: 40px;
+  padding: 10px 20px;
+  border: 0;
+  border-radius: 30px;
+  position: relative;
+  top: 0;
+  right: -1px;
+  color: rgba(0, 0, 0, 0.87);
+  cursor: pointer;
+}
+
+.search-input button:hover {
+  background-color: darkmagenta;
+  color: white;
+}

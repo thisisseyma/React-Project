@@ -1,0 +1,59 @@
+.movie-container {
+  display: flex;
+  margin-left: 17.5%;
+}
+
+.movie-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.movie-card-img {
+  width: 100%;
+  box-shadow: 0.5em 1em 1em rgb(64, 64, 70);
+  border-radius: 20px;
+  margin-top: 100px;
+  margin-right: 40%;
+}
+
+.movie-info {
+  display: flex;
+  flex-flow: column wrap;
+  width: 100%;
+  margin: 0px;
+}
+
+.movie-info h1 {
+  margin: 0px 0px 0.35em;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 3rem;
+  line-height: 1.167;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.overview {
+  margin: 0px 0px 0.35em;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.334;
+  letter-spacing: 0em;
+  padding-left: 40px;
+  padding-bottom: 20px;
+  text-align: justify;
+}
+
+.movie-info p {
+  margin: 0px;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  width: 80%;
+  padding-left: 40px;
+  text-align: justify;
+}

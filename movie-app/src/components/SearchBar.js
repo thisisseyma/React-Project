@@ -1,23 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import "./SearchBar.css";
-import MovieCard from "./MovieCard";
 import { useMovies } from "../context/MoviesContext";
+import { useSearch } from "../context/SearchContext";
 
 const SearchBar = () => {
-  const [search, setSearch] = useState("");
-  const { updateMoviesData, moviesData } = useMovies();
+  const { search, setSearch } = useSearch();
+  const { updateMoviesData } = useMovies();
 
   const fetchMovies = async () => {
     try {
-      //const apiKey = "01362cd35d583e444d19758bff64a01f";
       const apiUrl = `https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=1`;
 
       const options = {
         method: "GET",
         headers: {
           accept: "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMTM2MmNkMzVkNTgzZTQ0NGQxOTc1OGJmZjY0YTAxZiIsInN1YiI6IjY1MWZkZTMyNzQ1MDdkMDBlMjExNmE1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.22Hx92KLNqH4ve5puNNHvQJ3ldaBgdA3yo2jIeoTaVE",
+          Authorization: process.env.REACT_APP_AUTHORIZATION,
         },
       };
 
@@ -38,7 +36,7 @@ const SearchBar = () => {
 
   return (
     <div className="search-bar">
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit} className="search-field">
         <div className="search-input">
           <input
             value={search}
@@ -51,15 +49,6 @@ const SearchBar = () => {
           </button>
         </div>
       </form>
-      <div>
-        <ul>
-          {moviesData.map((movie) => (
-            <li key={movie.id}>
-              <MovieCard movie={movie} />
-            </li>
-          ))}
-        </ul>
-      </div>
     </div>
   );
 };

@@ -3,26 +3,32 @@ import { Link } from "react-router-dom";
 import "./Sidebar.css";
 import logo from "../assets/images/logo.png";
 import GenreCard from "./GenreCard";
-import { useMovies } from "../context/MoviesContext";
 import CategoryCard from "./CategoryCard";
+import { useMovies } from "../context/MoviesContext";
+import { useSearch } from "../context/SearchContext";
 
 const Sidebar = () => {
   const [genresList, setGenresList] = useState([]);
+  const [activeCategoryName, setActiveCategoryName] = useState("Popular");
   const { defaultMoviesData } = useMovies();
+  const { setSearch } = useSearch();
   const categoriesData = ["Popular", "Top Rated", "Upcoming"];
+
+  const handleActiveCategory = (e) => {
+    setActiveCategoryName(e.target.innerHTML);
+    setSearch("");
+  };
 
   useEffect(() => {
     const fetchGenres = async () => {
       try {
-        //const apiKey = "01362cd35d583e444d19758bff64a01f";
         const apiUrl = `https://api.themoviedb.org/3/genre/movie/list?language=en`;
 
         const options = {
           method: "GET",
           headers: {
             accept: "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMTM2MmNkMzVkNTgzZTQ0NGQxOTc1OGJmZjY0YTAxZiIsInN1YiI6IjY1MWZkZTMyNzQ1MDdkMDBlMjExNmE1MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.22Hx92KLNqH4ve5puNNHvQJ3ldaBgdA3yo2jIeoTaVE",
+            Authorization: process.env.REACT_APP_AUTHORIZATION,
           },
         };
 
@@ -34,26 +40,52 @@ const Sidebar = () => {
       }
     };
     fetchGenres();
+    defaultMoviesData();
+    // eslint-disable-next-line
   }, []);
 
   return (
-    <div className="navbar">
-      <Link to="/" onClick={defaultMoviesData}>
+    <div className="sidebar">
+      <Link
+        to="/"
+        onClick={() => {
+          defaultMoviesData();
+          setActiveCategoryName("Popular");
+          setSearch("");
+        }}
+      >
         <img className="logo" src={logo} alt="logo" />
       </Link>
-      <div className="nav-links">
-        <h5>Categories</h5>
+      <div className="side-links">
+        <h3 className="side-item">Categories</h3>
         <ul>
           {categoriesData.map((category) => (
-            <li key={category}>
-              <CategoryCard category={category}/>
+            <li
+              key={category}
+              className={
+                activeCategoryName === category
+                  ? "side-elements active-category"
+                  : "side-elements"
+              }
+              onClick={handleActiveCategory}
+            >
+              <CategoryCard category={category} />
             </li>
           ))}
         </ul>
-        <h5>Genres</h5>
+        <hr className="hr" />
+        <h3 className="side-item">Genres</h3>
         <ul>
           {genresList.map((genre) => (
-            <li key={genre.id}>
+            <li
+              key={genre.id}
+              className={
+                activeCategoryName === genre.name
+                  ? "side-elements active-category"
+                  : "side-elements"
+              }
+              onClick={handleActiveCategory}
+            >
               <GenreCard genre={genre} />
             </li>
           ))}

@@ -1,0 +1,21 @@
+.movie-card {
+  text-decoration: none;
+  font-size: 0.8em;
+  color: rgba(0, 0, 0, 0.87);
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  width: 210px;
+  white-space: normal;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+}
+
+.movie-card-image {
+  height: 300px;
+  border-radius: 20px;
+  margin-bottom: 2px;
+}
+
+.movie-card-image:hover {
+  transform: scale(1.1);
+}
