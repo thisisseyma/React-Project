@@ -22,7 +22,7 @@ const Sidebar = () => {
   useEffect(() => {
     const fetchGenres = async () => {
       try {
-        const apiUrl = `https://api.themoviedb.org/3/genre/movie/list?language=en`;
+        const apiUrl = `${process.env.REACT_APP_BASE_URL}/genre/movie/list?language=en`;
 
         const options = {
           method: "GET",

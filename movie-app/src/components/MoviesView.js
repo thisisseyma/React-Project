@@ -16,7 +16,9 @@ function MoviesView() {
           ))}
         </ul>
       ) : (
-        <div className="movies-view">No movies found!</div>
+        <div className="movies-view">
+          <p>No movies found!</p>
+        </div>
       )}
     </div>
   );

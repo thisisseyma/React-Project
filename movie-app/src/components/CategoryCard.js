@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import { useMovies } from "../context/MoviesContext";
 
 function CategoryCard({ category }) {
-  const { updateMoviesData, defaultMoviesData } = useMovies();
+  const { setMoviesData, defaultMoviesData } = useMovies();
 
   const fetchCategories = async (category) => {
     try {
       const apiUrl =
         category === "Top Rated"
-          ? `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1`
-          : `https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1`;
+          ? `${process.env.REACT_APP_BASE_URL}/movie/top_rated?language=en-US&page=1`
+          : `${process.env.REACT_APP_BASE_URL}/movie/upcoming?language=en-US&page=1`;
       const options = {
         method: "GET",
         headers: {
@@ -21,7 +21,7 @@ function CategoryCard({ category }) {
 
       const response = await fetch(apiUrl, options);
       const data = await response.json();
-      updateMoviesData(data.results);
+      setMoviesData(data.results);
     } catch (error) {
       console.log(error);
     }

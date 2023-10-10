@@ -8,13 +8,11 @@ export const useMovies = () => {
 
 export const MoviesProvider = ({ children }) => {
   const [moviesData, setMoviesData] = useState([]);
-  const updateMoviesData = (data) => {
-    setMoviesData(data);
-  };
+
   const defaultMoviesData = () => {
     const getPopularMovies = async () => {
       try {
-        const apiUrl = `https://api.themoviedb.org/3/movie/popular?language=en-US&page=1`;
+        const apiUrl = `${process.env.REACT_APP_BASE_URL}/movie/popular?language=en-US&page=1`;
 
         const options = {
           method: "GET",
@@ -35,7 +33,7 @@ export const MoviesProvider = ({ children }) => {
   };
   return (
     <MoviesContext.Provider
-      value={{ updateMoviesData, moviesData, defaultMoviesData }}
+      value={{ setMoviesData, moviesData, defaultMoviesData }}
     >
       {children}
     </MoviesContext.Provider>

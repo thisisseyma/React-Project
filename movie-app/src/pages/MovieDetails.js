@@ -10,7 +10,7 @@ function MovieDetails() {
   useEffect(() => {
     const fetchMovieDetail = async () => {
       try {
-        const apiUrl = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
+        const apiUrl = `${process.env.REACT_APP_BASE_URL}/movie/${id}?language=en-US`;
 
         const options = {
           method: "GET",

@@ -13,3 +13,8 @@
   overflow-wrap: break-word;
 }
 
+.movies-view p {
+  font-size: 30px;
+  font-weight: bold;
+  margin: auto;
+}

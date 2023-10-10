@@ -5,11 +5,11 @@ import { useSearch } from "../context/SearchContext";
 
 const SearchBar = () => {
   const { search, setSearch } = useSearch();
-  const { updateMoviesData } = useMovies();
+  const { setMoviesData } = useMovies();
 
   const fetchMovies = async () => {
     try {
-      const apiUrl = `https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=1`;
+      const apiUrl = `${process.env.REACT_APP_BASE_URL}/search/movie?query=${search}&include_adult=false&language=en-US&page=1`;
 
       const options = {
         method: "GET",
@@ -21,7 +21,7 @@ const SearchBar = () => {
 
       const response = await fetch(apiUrl, options);
       const data = await response.json();
-      updateMoviesData(data.results);
+      setMoviesData(data.results);
     } catch (error) {
       console.log(error);
     }
