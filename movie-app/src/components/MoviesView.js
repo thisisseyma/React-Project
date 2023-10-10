@@ -1,6 +1,6 @@
 import React from "react";
 import MovieCard from "./MovieCard";
-import { useMovies } from "../context/MoviesContext";
+import { useMovies } from "../contexts/MoviesContext";
 import "./MoviesView.css";
 
 function MoviesView() {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useMovies } from "../context/MoviesContext";
+import { useMovies } from "../contexts/MoviesContext";
 
 function CategoryCard({ category }) {
   const { setMoviesData, defaultMoviesData } = useMovies();

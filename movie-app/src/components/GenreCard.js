@@ -1,5 +1,5 @@
 import React from "react";
-import { useMovies } from "../context/MoviesContext";
+import { useMovies } from "../contexts/MoviesContext";
 import { Link } from "react-router-dom";
 
 function GenreCard({ genre }) {

@@ -3,8 +3,8 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home.js";
 import MovieDetails from "./pages/MovieDetails";
-import { MoviesProvider } from "./context/MoviesContext";
-import { SearchProvider } from "./context/SearchContext";
+import { MoviesProvider } from "./contexts/MoviesContext";
+import { SearchProvider } from "./contexts/SearchContext";
 import Sidebar from "./components/Sidebar";
 
 function App() {

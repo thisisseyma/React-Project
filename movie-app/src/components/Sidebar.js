@@ -4,8 +4,8 @@ import "./Sidebar.css";
 import logo from "../assets/images/logo.png";
 import GenreCard from "./GenreCard";
 import CategoryCard from "./CategoryCard";
-import { useMovies } from "../context/MoviesContext";
-import { useSearch } from "../context/SearchContext";
+import { useMovies } from "../contexts/MoviesContext";
+import { useSearch } from "../contexts/SearchContext";
 
 const Sidebar = () => {
   const [genresList, setGenresList] = useState([]);

@@ -1,7 +1,7 @@
 import React from "react";
 import "./SearchBar.css";
-import { useMovies } from "../context/MoviesContext";
-import { useSearch } from "../context/SearchContext";
+import { useMovies } from "../contexts/MoviesContext";
+import { useSearch } from "../contexts/SearchContext";
 
 const SearchBar = () => {
   const { search, setSearch } = useSearch();

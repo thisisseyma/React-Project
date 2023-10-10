@@ -66,3 +66,13 @@
 .active-category {
   background-color: #cfcfcf;
 }
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 25%;
+  }
+
+  .side-links {
+    font-size: 0.8em;
+  }
+}
